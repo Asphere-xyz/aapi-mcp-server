@@ -59,6 +59,7 @@ Specify only if you want to get the balance for a specific blockchain.`
         blockchain: blockchains,
         walletAddress: address,
         onlyWhitelisted: true,
+        pageSize: 300,
       });
       return {
         content: [{ type: "text", text: formatBalanceReply(balances) }],
