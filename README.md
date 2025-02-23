@@ -38,4 +38,16 @@ export ANKR_AAPI_ENDPOINT="https://rpc.ankr.com/multichain/YOUR-TOKEN"
 pnpm start:sse
 ```
 
-Add to Cursor `http://localhost:3001/sse`
+## Configuring Cursor 🖥️
+
+Make sure `pnpm start:sse` is running.
+
+![Add Ankr AAPI MCP to Cursor](./assets/cursor-mcp.png)
+
+1. Open Cursor Settings
+2. Navigate to Features > MCP Servers
+3. Click on the "+ Add New MCP Server" button
+4. Fill out the following information:
+   - Name: Enter a nickname for the server (e.g., "Ankr AAPI MCP")
+   - Type: Select "sse" as the type
+   - Server URL: `http://localhost:3001/sse`
