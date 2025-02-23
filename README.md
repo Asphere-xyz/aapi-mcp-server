@@ -14,7 +14,7 @@ This is a Model Context Protocol ([MCP](https://modelcontextprotocol.io/)) serve
 
 ## Prerequisites
 
-1. [Ankr API Key](http://ankr.com/rpc/)
+1. [Ankr Advanced API Endpoint](http://ankr.com/rpc/)
    - Create a free account at [ankr.com/rpc](http://ankr.com/rpc/)
 
 ## Local development
@@ -34,6 +34,7 @@ pnpm build
 Run SSE
 
 ```sh
+export ANKR_AAPI_ENDPOINT="https://rpc.ankr.com/multichain/YOUR-TOKEN"
 pnpm start:sse
 ```
 
