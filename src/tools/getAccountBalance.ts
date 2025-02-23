@@ -25,6 +25,13 @@ ${
 export function registerGetAccountBalance(server: McpServer) {
   server.tool(
     "getAccountBalance",
+    `Get the balance of an account on multiple blockchains by providing an wallet address or ENS name.
+For example:
+- get balance for 0x1234567890123456789012345678901234567890
+- get balance for vitalik.eth
+
+Blockchains supported:
+- ${blockchains.join("\n- ")}`,
     {
       address: z
         .string()
