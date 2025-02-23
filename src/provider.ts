@@ -1,12 +1,13 @@
 import { AnkrProvider } from "@ankr.com/ankr.js";
 
-const ANKR_API_KEY = process.env.ANKR_API_KEY;
-if (!ANKR_API_KEY) {
-  console.error("Error: ANKR_API_KEY environment variable is required");
+const ANKR_AAPI_ENDPOINT = process.env.ANKR_AAPI_ENDPOINT;
+if (!ANKR_AAPI_ENDPOINT) {
+  console.error("Error: ANKR_AAPI_ENDPOINT environment variable is required");
   process.exit(1);
 }
 
-export const provider = new AnkrProvider(ANKR_API_KEY);
+// Example: https://rpc.ankr.com/multichain/YOUR-TOKEN
+export const provider = new AnkrProvider(ANKR_AAPI_ENDPOINT);
 
 export const blockchains = [
   "arbitrum",

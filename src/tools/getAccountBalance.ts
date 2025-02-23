@@ -10,14 +10,14 @@ Assets:
 ${reply.assets
   .map(
     (asset) =>
-      `• ${asset.blockchain}: ${asset.balance} ${asset.tokenSymbol} ($${
-        asset.balanceUsd
-      })
-    Token: ${asset.tokenName}${
-        asset.contractAddress
-          ? `\n    Contract: ${asset.contractAddress}`
-          : " (Native)"
-      }`
+      `• ${asset.tokenName} ${asset.tokenSymbol} (${asset.blockchain}): ${
+        asset.balance
+      } ($${asset.balanceUsd})
+${
+  asset.contractAddress
+    ? `\n    Contract: ${asset.contractAddress}`
+    : " (Native)"
+}`
   )
   .join("\n\n")}`;
 }
@@ -38,15 +38,20 @@ export function registerGetAccountBalance(server: McpServer) {
         .array(z.enum(blockchains))
         .optional()
         .describe(
-          `The blockchains to get the balance for.
-If not provided, the balance will be fetched for all blockchains.
+          `The blockchains to get the balance for. 
+If not provided, the balance will be fetched for all blockchains. 
 Specify only if you want to get the balance for a specific blockchain.`
         ),
     },
     async ({ address, blockchains }) => {
+      console.debug(
+        `getAccountBalance, address: ${address}, blockchains: ${blockchains}`
+      );
+
       const balances = await provider.getAccountBalance({
         blockchain: blockchains,
         walletAddress: address,
+        onlyWhitelisted: true,
       });
       return {
         content: [{ type: "text", text: formatBalanceReply(balances) }],
