@@ -7,6 +7,10 @@ async function main() {
   const app = express();
   const sessionTransport: Map<string, SSEServerTransport> = new Map();
 
+  app.get("/", async (req, res) => {
+    res.send(`{"status": "ok"}`);
+  });
+
   app.get("/:apiKey/sse", async (req, res) => {
     const apiKey = req.params.apiKey;
     if (!apiKey) {
