@@ -21,9 +21,13 @@ async function main() {
     });
 
     const server = createServer(apiKey);
-
     const transport = new SSEServerTransport("/messages", res);
+
     sessionTransport.set(transport.sessionId, transport);
+    server.server.onclose = async () => {
+      await server.close();
+      sessionTransport.delete(transport.sessionId);
+    };
 
     await server.server.connect(transport);
   });

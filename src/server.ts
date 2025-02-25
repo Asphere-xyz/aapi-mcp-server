@@ -15,5 +15,5 @@ export const createServer = (apiKey: string) => {
   registerGetAccountBalance({ server, provider });
   registerGetTokenPrice({ server, provider });
 
-  return { server };
+  return server;
 };

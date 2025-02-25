@@ -8,7 +8,7 @@ async function main() {
     process.exit(1);
   }
 
-  const { server } = createServer(apiKey);
+  const server = createServer(apiKey);
   const transport = new StdioServerTransport();
 
   console.log("⚡ stdio server is running");

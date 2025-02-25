@@ -45,3 +45,19 @@ Make sure `pnpm start:sse` is running.
    - Name: Enter a nickname for the server (e.g., "Ankr AAPI MCP")
    - Type: Select "sse" as the type
    - Server URL: `http://localhost:3001/sse`
+
+## Hosted MCP Server
+
+Hosted MCP server is a publicly avaialble SSE server with authentication
+
+Make sure `pnpm start:sse` is running.
+
+![Add Ankr AAPI MCP to Cursor](./assets/cursor-mcp.png)
+
+1. Open Cursor Settings
+2. Navigate to Features > MCP Servers
+3. Click on the "+ Add New MCP Server" button
+4. Fill out the following information:
+   - Name: Enter a nickname for the server (e.g., "Ankr AAPI MCP")
+   - Type: Select "sse" as the type
+   - Server URL: `http://localhost:3001/sse`
