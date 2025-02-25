@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
-    "prepare": "npm run build",
     "dev": "tsx src/index.ts",
     "dev:sse": "tsx src/sse.ts",
     "dev:managed": "tsx src/managed/sse.ts",
@@ -35,6 +34,7 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.5",
-    "tsx": "^4.19.3"
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
   }
 }

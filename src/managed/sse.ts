@@ -59,6 +59,11 @@ async function main() {
   app.listen(PORT);
 }
 
+process.on("SIGINT", () => {
+  console.log("SIGINT received, shutting down...");
+  process.exit(0);
+});
+
 main().catch((error) => {
   console.error("Fatal error:", error);
   process.exit(1);
