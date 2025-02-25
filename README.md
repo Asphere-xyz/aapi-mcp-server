@@ -25,16 +25,10 @@ Install dependencies
 pnpm i
 ```
 
-Build
+Run local SSE server
 
 ```sh
-pnpm build
-```
-
-Run SSE
-
-```sh
-export ANKR_API_KEY="https://rpc.ankr.com/multichain/YOUR-TOKEN"
+export ANKR_API_KEY="YOUR-ANKR-KEY"
 pnpm start:sse
 ```
 
