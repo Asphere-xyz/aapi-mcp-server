@@ -1,8 +1,15 @@
+import { AnkrProvider } from "@ankr.com/ankr.js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import { provider, blockchains } from "../provider.js";
+import { blockchains } from "../provider.js";
 
-export function registerGetTokenPrice(server: McpServer) {
+export function registerGetTokenPrice({
+  server,
+  provider,
+}: {
+  server: McpServer;
+  provider: AnkrProvider;
+}) {
   server.tool(
     "getTokenPrice",
     `Get the price of a token on a specific blockchain. Provide contract address for ERC20 tokens or leave empty for native coin.
@@ -34,6 +41,7 @@ Blockchains supported:
         blockchain,
         contractAddress,
       });
+
       return {
         content: [
           {

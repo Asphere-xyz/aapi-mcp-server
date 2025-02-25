@@ -34,7 +34,7 @@ pnpm build
 Run SSE
 
 ```sh
-export ANKR_AAPI_ENDPOINT="https://rpc.ankr.com/multichain/YOUR-TOKEN"
+export ANKR_API_KEY="https://rpc.ankr.com/multichain/YOUR-TOKEN"
 pnpm start:sse
 ```
 

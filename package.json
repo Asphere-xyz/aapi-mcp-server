@@ -7,9 +7,12 @@
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
     "prepare": "npm run build",
-    "watch": "tsc --watch",
+    "dev": "tsx src/index.ts",
+    "dev:sse": "tsx src/sse.ts",
+    "dev:managed": "tsx src/managed/sse.ts",
     "start": "node dist/index.js",
-    "start:sse": "node dist/sse.js"
+    "start:sse": "node dist/sse.js",
+    "start:managed": "node dist/managed/sse.js"
   },
   "engines": {
     "node": ">=23.6.0"
@@ -24,13 +27,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ankr.com/ankr.js": "^0.5.2",
+    "@ankr.com/ankr.js": "0.6.0-alpha.0",
     "@modelcontextprotocol/sdk": "^1.5.0",
     "express": "^4.21.2",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/node": "^22.13.5"
+    "@types/node": "^22.13.5",
+    "tsx": "^4.19.3"
   }
 }

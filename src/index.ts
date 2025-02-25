@@ -2,8 +2,14 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { createServer } from "./server.js";
 
 async function main() {
+  const apiKey = process.env.ANKR_API_KEY;
+  if (!apiKey) {
+    console.error("Error: ANKR_API_KEY environment variable is required");
+    process.exit(1);
+  }
+
+  const { server } = createServer(apiKey);
   const transport = new StdioServerTransport();
-  const { server } = createServer();
 
   console.log("⚡ stdio server is running");
 

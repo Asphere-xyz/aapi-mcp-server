@@ -1,7 +1,7 @@
-import { GetAccountBalanceReply } from "@ankr.com/ankr.js";
+import { AnkrProvider, GetAccountBalanceReply } from "@ankr.com/ankr.js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import { blockchains, provider } from "../provider.js";
+import { blockchains } from "../provider.js";
 
 function formatBalanceReply(reply: GetAccountBalanceReply): string {
   return `Total Balance: $${reply.totalBalanceUsd}
@@ -22,7 +22,13 @@ ${
   .join("\n\n")}`;
 }
 
-export function registerGetAccountBalance(server: McpServer) {
+export function registerGetAccountBalance({
+  server,
+  provider,
+}: {
+  server: McpServer;
+  provider: AnkrProvider;
+}) {
   server.tool(
     "getAccountBalance",
     `Get the balance of an account on multiple blockchains by providing an wallet address or ENS name.
@@ -61,6 +67,9 @@ Specify only if you want to get the balance for a specific blockchain.`
         onlyWhitelisted: true,
         pageSize: 300,
       });
+
+      console.debug("completed getAccountBalance request", balances);
+
       return {
         content: [{ type: "text", text: formatBalanceReply(balances) }],
       };
