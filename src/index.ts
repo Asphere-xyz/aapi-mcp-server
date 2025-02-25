@@ -13,8 +13,6 @@ async function main() {
   const server = createServer(apiKey);
   const transport = new StdioServerTransport();
 
-  console.log("⚡ stdio server is running");
-
   await server.connect(transport);
 
   // Cleanup on exit

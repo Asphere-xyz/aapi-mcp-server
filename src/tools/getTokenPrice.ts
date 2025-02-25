@@ -34,9 +34,6 @@ Blockchains supported:
         ),
     },
     async ({ blockchain, contractAddress = "" }) => {
-      console.debug(
-        `getTokenPrice, blockchain: ${blockchain}, contractAddress: ${contractAddress}`
-      );
       const price = await provider.getTokenPrice({
         blockchain,
         contractAddress,

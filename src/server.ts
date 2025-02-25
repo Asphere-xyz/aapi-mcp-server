@@ -6,7 +6,7 @@ import { registerGetTokenPrice } from "./tools/getTokenPrice.js";
 export const createServer = (apiKey: string) => {
   const server = new McpServer({
     name: "AAPI MCP Server",
-    version: "0.1.0",
+    version: "0.1.1",
   });
 
   const provider = buildProvider(apiKey);

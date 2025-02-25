@@ -57,18 +57,12 @@ Specify only if you want to get the balance for a specific blockchain.`
         ),
     },
     async ({ address, blockchains }) => {
-      console.debug(
-        `getAccountBalance, address: ${address}, blockchains: ${blockchains}`
-      );
-
       const balances = await provider.getAccountBalance({
         blockchain: blockchains,
         walletAddress: address,
         onlyWhitelisted: true,
         pageSize: 300,
       });
-
-      console.debug("completed getAccountBalance request", balances);
 
       return {
         content: [{ type: "text", text: formatBalanceReply(balances) }],
