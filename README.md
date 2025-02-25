@@ -12,10 +12,40 @@ This is a Model Context Protocol ([MCP](https://modelcontextprotocol.io/)) serve
 - **Mainnets:** Ethereum, BSC, Polygon, Arbitrum, Avalanche, Base, Fantom, Gnosis, Linea, Optimism, and more
 - **Testnets:** Ethereum Sepolia, Ethereum Holesky, Base Sepolia, Avalanche Fuji, and others
 
-## Prerequisites
+## Setup
 
-1. [Ankr Advanced API Endpoint](http://ankr.com/rpc/)
+### Prerequisites
+
+1. Ankr API Key
    - Create a free account at [ankr.com/rpc](http://ankr.com/rpc/)
+
+### Configuring Cursor 🖥️
+
+1. Open Cursor Settings
+2. Navigate to Features > MCP Servers
+3. Click on the "+ Add New MCP Server" button
+4. Fill out the following information:
+   - Name: Enter a nickname for the server (e.g., "Ankr AAPI MCP")
+   - Type: Select "command" as the type
+   - Command: `env ANKR_API_KEY=<YOUR_KEY> npx -y aapi-mcp-server`
+
+![Add Ankr AAPI MCP to Cursor](./assets/cursor-mcp.png)
+
+### Use with Claude Desktop
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "aapi-mcp-server"],
+      "env": {
+        "ANKR_API_KEY": "<YOUR_KEY>"
+      }
+    }
+  }
+}
+```
 
 ## Local development
 
@@ -29,35 +59,30 @@ Run local SSE server
 
 ```sh
 export ANKR_API_KEY="YOUR-ANKR-KEY"
-pnpm start:sse
+pnpm dev:sse
 ```
-
-## Configuring Cursor 🖥️
-
-Make sure `pnpm start:sse` is running.
-
-![Add Ankr AAPI MCP to Cursor](./assets/cursor-mcp.png)
-
-1. Open Cursor Settings
-2. Navigate to Features > MCP Servers
-3. Click on the "+ Add New MCP Server" button
-4. Fill out the following information:
-   - Name: Enter a nickname for the server (e.g., "Ankr AAPI MCP")
-   - Type: Select "sse" as the type
-   - Server URL: `http://localhost:3001/sse`
 
 ## Hosted MCP Server
 
-Hosted MCP server is a publicly avaialble SSE server with authentication
+The hosted MCP server is a managed SSE endpoint that provides authenticated access over the internet.
 
-Make sure `pnpm start:sse` is running.
+### Endpoint
 
-![Add Ankr AAPI MCP to Cursor](./assets/cursor-mcp.png)
+```
+https://your-domain.com/{apiKey}/sse
+```
 
-1. Open Cursor Settings
-2. Navigate to Features > MCP Servers
-3. Click on the "+ Add New MCP Server" button
-4. Fill out the following information:
-   - Name: Enter a nickname for the server (e.g., "Ankr AAPI MCP")
-   - Type: Select "sse" as the type
-   - Server URL: `http://localhost:3001/sse`
+### Authentication
+
+- Replace `{apiKey}` with your key
+- The server uses this key to authenticate requests to Ankr Advanced API
+- Obtain your API key at [ankr.com/rpc](https://ankr.com/rpc)
+
+### Example
+
+```bash
+# Connect to the SSE endpoint
+curl -N https://your-domain.com/your-ankr-api-key/sse
+```
+
+The server validates your API key and establishes a persistent SSE connection for real-time blockchain data access.
