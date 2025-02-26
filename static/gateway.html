@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankr AAPI MCP Server</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Ankr AAPI MCP Server</h1>
+        <p>This MCP server provides tools for interacting with Ankr's Advanced APIs, enabling AI models to fetch
+            blockchain data. Read more about the MCP protocol <a href="https://modelcontextprotocol.com"
+                target="_blank">here</a>.</p>
+
+        <h2>Quick Start</h2>
+        <p>To connect to this MCP server, use the following configuration in your MCP client:</p>
+        <pre><code>Type: sse
+Server URL: <script>document.write(window.location.origin)</script>/{ANKR-API-KEY}/sse</code></pre>
+        <p>Replace <code>{ANKR-API-KEY}</code> with your Ankr API key from <a
+                href="https://ankr.com/rpc">ankr.com/rpc</a>
+        </p>
+    </main>
+</body>
+
+</html>

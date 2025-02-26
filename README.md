@@ -29,7 +29,7 @@ This is a Model Context Protocol ([MCP](https://modelcontextprotocol.io/)) serve
    - Type: Select "command" as the type
    - Command: `env ANKR_API_KEY=<YOUR_KEY> npx -y aapi-mcp-server`
 
-![Add Ankr AAPI MCP to Cursor](./assets/cursor-mcp.png)
+![Add Ankr AAPI MCP to Cursor](./static/img/cursor-mcp.png)
 
 ### Use with Claude Desktop
 

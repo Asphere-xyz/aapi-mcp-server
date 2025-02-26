@@ -14,6 +14,7 @@ RUN pnpm install
 # Copy source
 COPY tsconfig.json ./tsconfig.json
 COPY src ./src
+COPY static ./static
 
 # Build dist
 RUN pnpm build
@@ -27,6 +28,7 @@ WORKDIR /app
 # Copy node modules and build directory
 COPY --from=base /app/node_modules /app/node_modules
 COPY --from=base /app/dist /app/dist
+COPY --from=base /app/static /app/static
 
 # Expose port 3001
 EXPOSE 3001

@@ -1,14 +1,20 @@
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 import { createServer } from "./server.js";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 async function main() {
-  const PORT = process.env.PORT || 3001;
   const app = express();
+  const port = process.env.PORT || 3001;
   const sessionTransport: Map<string, SSEServerTransport> = new Map();
 
-  app.get("/", async (req, res) => {
-    res.send(`{"status": "ok"}`);
+  // Serve static HTML at root
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../static/gateway.html"));
   });
 
   app.get("/:apiKey/sse", async (req, res) => {
@@ -59,8 +65,9 @@ async function main() {
     await transport.handlePostMessage(req, res);
   });
 
-  console.log(`⚡ sse server is running on port ${PORT}`);
-  app.listen(PORT);
+  app.listen(port, () => {
+    console.log(`Gateway listening at http://localhost:${port}`);
+  });
 }
 
 process.on("SIGINT", () => {
