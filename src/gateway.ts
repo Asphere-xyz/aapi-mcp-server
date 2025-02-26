@@ -1,6 +1,6 @@
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import express from "express";
-import { createServer } from "../server.js";
+import { createServer } from "./server.js";
 
 async function main() {
   const PORT = process.env.PORT || 3001;

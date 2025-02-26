@@ -30,4 +30,4 @@ COPY --from=base /app/dist /app/dist
 
 # Expose port 3001
 EXPOSE 3001
-CMD ["/app/dist/managed/sse.js"]
+CMD ["/app/dist/gateway.js"]

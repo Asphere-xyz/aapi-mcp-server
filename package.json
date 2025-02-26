@@ -8,10 +8,10 @@
     "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
     "dev": "tsx src/index.ts",
     "dev:sse": "tsx src/sse.ts",
-    "dev:managed": "tsx src/managed/sse.ts",
+    "dev:gateway": "tsx src/gateway.ts",
     "start": "node dist/index.js",
     "start:sse": "node dist/sse.js",
-    "start:managed": "node dist/managed/sse.js"
+    "start:gateway": "node dist/gateway.js"
   },
   "engines": {
     "node": ">=23.6.0"

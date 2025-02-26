@@ -36,7 +36,7 @@ This is a Model Context Protocol ([MCP](https://modelcontextprotocol.io/)) serve
 ```json
 {
   "mcpServers": {
-    "github": {
+    "aapi": {
       "command": "npx",
       "args": ["-y", "aapi-mcp-server"],
       "env": {
@@ -62,27 +62,25 @@ export ANKR_API_KEY="YOUR-ANKR-KEY"
 pnpm dev:sse
 ```
 
-## Hosted MCP Server
+## Gateway
 
-The hosted MCP server is a managed SSE endpoint that provides authenticated access over the internet.
+The gateway creates an isolated MCP Server instance for each connection, enabling secure access over the internet. Each connection requires an `apiKey` in the URL path for authentication with Ankr Advanced API.
 
-### Endpoint
-
-```
-https://your-domain.com/{apiKey}/sse
-```
-
-### Authentication
-
-- Replace `{apiKey}` with your key
-- The server uses this key to authenticate requests to Ankr Advanced API
-- Obtain your API key at [ankr.com/rpc](https://ankr.com/rpc)
-
-### Example
+### Local Development
 
 ```bash
-# Connect to the SSE endpoint
-curl -N https://your-domain.com/your-ankr-api-key/sse
+# Start the gateway
+pnpm dev:gateway
+
+# Connect using localhost
+http://localhost:3001/{apiKey}/sse
 ```
 
-The server validates your API key and establishes a persistent SSE connection for real-time blockchain data access.
+### Deployment
+
+When deployed, MCP clients can connect using:
+
+```yaml
+type: sse
+url: https://your-domain.com/{apiKey}/sse
+```
