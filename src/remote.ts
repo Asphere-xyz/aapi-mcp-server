@@ -14,7 +14,7 @@ async function main() {
 
   // Serve static HTML at root
   app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../static/gateway.html"));
+    res.sendFile(path.join(__dirname, "../static/remote.html"));
   });
 
   app.get("/:apiKey/sse", async (req, res) => {
@@ -66,7 +66,7 @@ async function main() {
   });
 
   app.listen(port, () => {
-    console.log(`Gateway listening at http://localhost:${port}`);
+    console.log(`Server listening at http://localhost:${port}`);
   });
 }
 

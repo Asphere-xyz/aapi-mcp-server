@@ -32,4 +32,4 @@ COPY --from=base /app/static /app/static
 
 # Expose port 3001
 EXPOSE 3001
-CMD ["/app/dist/gateway.js"]
+CMD ["/app/dist/remote.js"]

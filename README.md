@@ -5,7 +5,13 @@ This is a Model Context Protocol ([MCP](https://modelcontextprotocol.io/)) serve
 ## Tools
 
 - `getAccountBalance`: Fetch token balances across multiple blockchains for any address or ENS name
+  - Arguments:
+    - `address`: Ethereum address (0x...) or ENS name (\*.eth)
+    - `blockchains` (optional): Array of specific blockchains to query. If not provided, checks all supported chains
 - `getTokenPrice`: Get current price for any token (native or ERC20) on supported blockchains
+  - Arguments:
+    - `blockchain`: The blockchain network (eth, bsc, polygon, etc.)
+    - `contractAddress` (optional): The token's contract address. Leave empty for native coin
 
 ## Supported Blockchains
 
@@ -62,15 +68,15 @@ export ANKR_API_KEY="YOUR-ANKR-KEY"
 pnpm dev:sse
 ```
 
-## Gateway
+## Remote server
 
-The gateway creates an isolated MCP Server instance for each connection, enabling secure access over the internet. Each connection requires an `apiKey` in the URL path for authentication with Ankr Advanced API.
+In the remote mode service creates an isolated MCP Server instance for each connection, enabling secure and isolated access over the internet. Each connection requires an `apiKey` in the URL path for authentication with Ankr Advanced API.
 
 ### Local Development
 
 ```bash
-# Start the gateway
-pnpm dev:gateway
+# Start the remote server
+pnpm dev:remote
 
 # Connect using localhost
 http://localhost:3001/{apiKey}/sse
@@ -82,5 +88,5 @@ When deployed, MCP clients can connect using:
 
 ```yaml
 type: sse
-url: https://your-domain.com/{apiKey}/sse
+url: https://your-remote-url.com/{apiKey}/sse
 ```
