@@ -33,7 +33,7 @@ This is a Model Context Protocol ([MCP](https://modelcontextprotocol.io/)) serve
 4. Fill out the following information:
    - Name: Enter a nickname for the server (e.g., "Ankr AAPI MCP")
    - Type: Select "command" as the type
-   - Command: `env ANKR_API_KEY=<YOUR_KEY> npx -y aapi-mcp-server`
+   - Command: `env ANKR_API_KEY=<YOUR_KEY> npx -y @asphere/aapi-mcp-server`
 
 ![Add Ankr AAPI MCP to Cursor](./static/img/cursor-mcp.png)
 
@@ -44,7 +44,7 @@ This is a Model Context Protocol ([MCP](https://modelcontextprotocol.io/)) serve
   "mcpServers": {
     "aapi": {
       "command": "npx",
-      "args": ["-y", "aapi-mcp-server"],
+      "args": ["-y", "@asphere/aapi-mcp-server"],
       "env": {
         "ANKR_API_KEY": "<YOUR_KEY>"
       }
@@ -71,6 +71,14 @@ pnpm dev:sse
 ## Remote server
 
 In the remote mode service creates an isolated MCP Server instance for each connection, enabling secure and isolated access over the internet. Each connection requires an `apiKey` in the URL path for authentication with Ankr Advanced API.
+
+### Asphere Managed AAPI MCP Remote server
+
+The managed version is available on https://aapi-mcp-server.asphere.network/
+
+```sh
+https://aapi-mcp-server.asphere.network/{ANKR-API-KEY}/sse
+```
 
 ### Local Development
 
