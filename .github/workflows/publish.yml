@@ -10,10 +10,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
       - uses: actions/setup-node@v4
         with:
           node-version: 23
           registry-url: https://registry.npmjs.org
+          cache: "pnpm"
       - run: pnpm install
       - run: pnpm build
       - run: pnpm publish --access public ${{ github.event.release.prerelease && '--tag alpha' || '' }}
