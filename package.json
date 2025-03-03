@@ -1,5 +1,5 @@
 {
-  "name": "aapi-mcp-server",
+  "name": "@asphere/aapi-mcp-server",
   "version": "0.1.1",
   "description": "A MCP server for the Ankr Advanced API",
   "homepage": "https://ankr.com/",
@@ -8,10 +8,10 @@
     "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
     "dev": "tsx src/index.ts",
     "dev:sse": "tsx src/sse.ts",
-    "dev:gateway": "tsx src/gateway.ts",
+    "dev:remote": "tsx src/remote.ts",
     "start": "node dist/index.js",
     "start:sse": "node dist/sse.js",
-    "start:gateway": "node dist/gateway.js"
+    "start:remote": "node dist/remote.js"
   },
   "engines": {
     "node": ">=23.6.0"
@@ -22,9 +22,19 @@
   "files": [
     "dist"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "ankr",
+    "asphere",
+    "advanced api",
+    "aapi",
+    "mcp",
+    "server",
+    "blockchain",
+    "ai",
+    "ai tools"
+  ],
+  "author": "Asphere",
+  "license": "MIT",
   "dependencies": {
     "@ankr.com/ankr.js": "0.6.0-alpha.0",
     "@modelcontextprotocol/sdk": "^1.5.0",
